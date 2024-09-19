@@ -10,7 +10,8 @@ function Cupan() {
     const [itemGemini, setGemini] = useState(40)
     const [itemGoogle, setGoogle] = useState(60)
     const [itemDescount, setDescount] = useState(itemChat+itemGemini+itemGoogle)
-
+    const [coupen, setCoupen] = useState('')
+    
     const complite = useRef(null);
 
     const totle = itemChat+itemGemini+itemGoogle
@@ -18,9 +19,7 @@ function Cupan() {
     const hendelDescuount = ()=>{
         setDescount  ( totle / 2)
         complite.current.style.opacity = "1";
-        console.log("efg5yghvrtb")
        }
-
 
     const chatplus = () => {
         setChatCountety(prevCount => prevCount + 1);
@@ -50,6 +49,14 @@ function Cupan() {
     const googlemine = () => {
         setGoogleCountety(prevCount => (prevCount > 1 ? prevCount - 1 : 1));
         setGoogle(prevCount => (prevCount > 80 ? prevCount - 80 : 80));
+    }
+
+    
+    const hendelCoupne = (event) => {
+        event.prentDefault()
+
+        setCoupen(event.target.value)
+
     }
 
     const cupen = "K24752psur261"
@@ -127,7 +134,10 @@ function Cupan() {
                     </div>
                     <div className="right">
                         <div className="cupun">
-                            <input type="text" placeholder='Enter Cupen Code'/>
+                            <input 
+                            type="text"
+                            placeholder='Enter Cupen Code'
+                            />
                         </div>
                         <div className="submit">
                             <button type="submit" ref={complite} onClick={hendelDescuount} >Submit Cupen Code </button>
@@ -140,7 +150,7 @@ function Cupan() {
                             <h3 ref={complite} style={{ opacity: 0 }}>You Got 50% Descount</h3>
                           </div>
                         </div>
-                        
+                        <h1>{coupen}</h1>
                 </div>
 
                 </div>
